@@ -45,7 +45,7 @@ header {
 }
 
 .search-bar {
-  width: 20vw;
+  width: 30vw;
   height: 21px;
   font-size: large;
   border: none;
@@ -73,7 +73,7 @@ header {
 .recipes {
   padding-top: 75px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -103,4 +103,48 @@ ul li{
 
 ul li:hover {
   background-color: #50fa7b;
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.recipe {
+  /* border-radius: 10px; */
+  box-shadow: 2px 2px 4px grey;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* background: #44475a; */
+  align-items: center;
+  /* min-width: 40%; */
+  width: 300px;
+  /* color: white; */
+}
+
+.recipe:hover {
+  box-shadow: 0px 0px 20px grey;
+}
+
+.images {
+  height: 300px;
+  width: 300px;
+  /* width: 100%; */
+  background-size: cover;
+  margin-bottom: 20px;
+  /* border-radius: 10px; */
+}
+
+.title {
+  margin: 5px;
 }
