@@ -105,31 +105,16 @@ ul li:hover {
   background-color: #50fa7b;
 }
 
-.skeleton {
-  animation: skeleton-loading 1s linear infinite alternate;
-}
 
-@keyframes skeleton-loading {
-  0% {
-    background-color: hsl(200, 20%, 70%);
-  }
-  100% {
-    background-color: hsl(200, 20%, 95%);
-  }
-}
 
 .recipe {
-  /* border-radius: 10px; */
   box-shadow: 2px 2px 4px grey;
   margin: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* background: #44475a; */
   align-items: center;
-  /* min-width: 40%; */
   width: 300px;
-  /* color: white; */
 }
 
 .recipe:hover {

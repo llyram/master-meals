@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Recipe from "./components/Recipe";
+// import SkeletonElement from "./Skeletons/SkeletonElement";
+import SkeletonRecipe from "./Skeletons/SkeletonRecipe";
 import "./App.css";
 
 const App = () => {
   const APP_ID = "12b28fb1";
   const API_KEY = "172fe97b5c8265bc43881237e14ef1fd";
 
-  const [recipes, setrecipes] = useState([]);
+  const [recipes, setRecipes] = useState(null);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("chicken");
+
+  // let filledArray = Array.from({length:6},()=> ({recipe:{label:"", calories:"", image:"", ingredients:""}}));
+  // setrecipes(filledArray);
 
   useEffect(() => {
     getrecipes();
@@ -19,7 +24,7 @@ const App = () => {
       `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${API_KEY}`
     );
     const data = await response.json();
-    setrecipes(data.hits);
+    setRecipes(data.hits);
     console.log(data.hits);
   };
 
@@ -29,6 +34,7 @@ const App = () => {
 
   const getSearch = (e) => {
     e.preventDefault();
+    setRecipes(null);
     setQuery(search);
   };
 
@@ -54,16 +60,21 @@ const App = () => {
           <li>About</li>
         </ul>
       </header>
+
       <div className="recipes">
-        {recipes.map((recipe) => (
-          <Recipe
-            key={recipe.recipe.label}
-            title={recipe.recipe.label}
-            calories={recipe.recipe.calories}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
-          />
-        ))}
+        {recipes &&
+          recipes.map((recipe) => (
+            <Recipe
+              key={recipe.recipe.label}
+              title={recipe.recipe.label}
+              calories={recipe.recipe.calories}
+              image={recipe.recipe.image}
+              ingredients={recipe.recipe.ingredients}
+            />
+          ))}
+
+        {!recipes &&
+          [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => <SkeletonRecipe key={n} />)}
       </div>
     </div>
   );

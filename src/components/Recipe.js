@@ -4,7 +4,7 @@ import React from "react";
 const Recipe = ({ title, calories, image, ingredients }) => {
   return (
     <div className="recipe">
-      <img className="images skeleton" src={image} alt="" />
+      <img className="images" src={image} alt="" />
       <h2 className="title">{title}</h2>
       {/* <h3>Ingredients</h3>
       <ul>
