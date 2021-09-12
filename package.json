@@ -1,5 +1,5 @@
 {
-  "homepage": "http://maryll-castelino.github.io/react-recipe-app",
+  "homepage": "http://Maryll-castelino.github.io/recipe-api-app",
   "name": "react-recepie-app",
   "version": "0.1.0",
   "private": true,
@@ -39,6 +39,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.2.3"
   }
 }
