@@ -31,7 +31,7 @@ header {
   left: 0;
   box-shadow: 0px 0px 2px gray;
   background-color: white;
-  height: 80px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,6 +59,7 @@ header {
 
 .search-bar:focus {
   background-color: white;
+  border: 2px solid #50fa7b;
 }
 
 .search-btn {
@@ -68,6 +69,7 @@ header {
   padding: 10px 20px;
   color: #44475a;
   border-radius: 0px 5px 5px 0px;
+  cursor: pointer;
 }
 
 .recipes {
@@ -77,32 +79,43 @@ header {
   flex-wrap: wrap;
 }
 
+.fillerDivs {
+  content: ' ';
+  width: 290px;
+  /* margin: 20px; */
+}
+
 h1 {
   color: #44475a;
   font-family: 'Lobster', cursive;
   font-size: 40px;
+  margin: 0;
   margin-left: 5vw;
+  cursor: default;
 }
 
-ul {
+.nav-list {
   list-style: none;
   display: flex;
   margin: 0;
-  height: 80px;
+  height: 100%;
 }
 
-ul li{
-  padding: 20px;
+.nav-list li{
+  padding-left: 40px;
+  padding-right: 40px;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 50px;
+  font-size: large;
   font-family: 'Lobster', cursive;
 }
 
-ul li:hover {
+.nav-list li:hover {
   background-color: #50fa7b;
+  cursor: pointer;
 }
 
 
@@ -114,7 +127,7 @@ ul li:hover {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 300px;
+  width: 250px;
 }
 
 .recipe:hover {
@@ -122,8 +135,8 @@ ul li:hover {
 }
 
 .images {
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
   /* width: 100%; */
   background-size: cover;
   margin-bottom: 20px;
@@ -132,4 +145,43 @@ ul li:hover {
 
 .title {
   margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation {
+  height: 100%;
+  /* position: relative; */
+}
+
+.popular-dropdown {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #44475a;
+  background-color: white;
+  display: none;
+  top: 70px;
+  left: 0px;
+  position: absolute;
+  z-index: 1;
+  list-style: none;
+}
+
+.popular-dropdown li {
+  padding: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.popular-dropdown li:hover {
+  background-color: #50fa7b;
+}
+
+.popular {
+  position: relative;
+}
+
+.popular:hover .popular-dropdown {
+  display: block;
 }
