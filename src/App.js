@@ -71,6 +71,9 @@ const App = () => {
           updateSearch={updateSearch}
           popularHandler={popularHandler}
         />
+        <Route exact path="/">
+          <Redirect to="/recipes" />
+        </Route>
         <Route path="/recipes">
           <RecipeGrid recipes={recipes} setCurrentIndex={setCurrentIndex} />
         </Route>
