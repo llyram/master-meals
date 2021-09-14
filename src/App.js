@@ -2,9 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import Recipe from "./components/Recipe";
 import SkeletonRecipe from "./Skeletons/SkeletonRecipe";
 import "./App.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import LoadingBar from "react-top-loading-bar";
+import Header from "./components/Header";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link,
+} from "react-router-dom";
+import RecipeGrid from "./components/RecipesGrid";
+import RecipePage from "./components/RecipePage";
 
 const App = () => {
   const APP_ID = "12b28fb1";
@@ -13,6 +21,7 @@ const App = () => {
   const [recipes, setRecipes] = useState(null);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("chicken");
+  const [currentIndex, setCurrentIndex] = useState(null);
 
   // const [progress, setProgress] = useState(0);
   const progress = useRef(null);
@@ -53,59 +62,23 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <LoadingBar color="#f11946" ref={progress} height={3} />
-      <header>
-        <h1>Recipes</h1>
-        <form onSubmit={getSearch} className="search-form">
-          <input
-            className="search-bar"
-            type="text"
-            value={search}
-            placeholder="Search for your favorite recipes"
-            onChange={updateSearch}
-          />
-          <button className="search-btn" type="submit">
-            <FontAwesomeIcon icon={faSearch} size="lg" />
-          </button>
-        </form>
-        {/* <div className="navigation"> */}
-        <ul className="nav-list">
-          <li>Home</li>
-          <li className="popular">
-            Popular
-            <ul className="popular-dropdown" onClick={popularHandler}>
-              <li>Chicken</li>
-              <li>Mutton</li>
-              <li>Biryani</li>
-              <li>Soup</li>
-            </ul>
-          </li>
-          <li>About</li>
-        </ul>
-        {/* </div> */}
-      </header>
-
-      <div className="recipes">
-        {recipes &&
-          recipes.map((recipe) => (
-            <Recipe
-              key={recipe.recipe.label}
-              title={recipe.recipe.label}
-              calories={recipe.recipe.calories}
-              image={recipe.recipe.image}
-              ingredients={recipe.recipe.ingredients}
-            />
-          ))}
-
-        {!recipes &&
-          [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => <SkeletonRecipe key={n} />)}
-
-        {[1,2,3,4].map((n) => (
-          <div className="fillerDivs" key={n}></div>
-        ))}
+    <Router>
+      <div className="App">
+        <LoadingBar color="#f11946" ref={progress} height={3} />
+        <Header
+          getSearch={getSearch}
+          search={search}
+          updateSearch={updateSearch}
+          popularHandler={popularHandler}
+        />
+        <Route path="/recipes">
+          <RecipeGrid recipes={recipes} setCurrentIndex={setCurrentIndex} />
+        </Route>
+        <Route path="/recipe">
+          {currentIndex && <RecipePage recipes={recipes} currentIndex={currentIndex} />}
+        </Route>
       </div>
-    </div>
+    </Router>
   );
 };
 

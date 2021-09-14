@@ -1,20 +1,19 @@
 import React from "react";
-import style from "../recipe.module.css";
 
-const Recipe = ({ title, calories, image, ingredients }) => {
+const RecipePage = ({ recipes, currentIndex }) => {
   return (
-    <div className={style.recipe}>
-      <img className={style.images} src={image} alt="" />
-      <h1>{title}</h1>
-      <h3>Ingredients</h3>
-      <ul>
-        {ingredients.map((ingredient) => (
-          <li>{ingredient.text}</li>
+    <div className="recipe-page">
+      <img src={recipes[currentIndex].recipe.image} alt="" />
+      <div className="recipe-descriptoin">
+        <h1>{recipes[currentIndex].recipe.label}</h1>
+        <ul>
+        {recipes[currentIndex].recipe.ingredients.map((ingredients, index) => (
+          <li key={index}>{ingredients.text}</li>
         ))}
-      </ul>
-      <p> Calories - {calories}</p>
+        </ul>
+      </div>
     </div>
   );
 };
 
-export default Recipe;
+export default RecipePage;
