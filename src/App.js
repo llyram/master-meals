@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import RecipeGrid from "./components/RecipesGrid";
 import RecipePage from "./components/RecipePage";
+import GithubCorner from "react-github-corner";
 
 const App = () => {
   const APP_ID = "12b28fb1";
@@ -41,7 +42,7 @@ const App = () => {
     const data = await response.json();
     setRecipes(data.hits);
     progress.current.complete();
-    console.log(data.hits);
+    console.log(data.hits[0]);
   };
 
   const updateSearch = (e) => {
@@ -71,15 +72,19 @@ const App = () => {
           updateSearch={updateSearch}
           popularHandler={popularHandler}
         />
-        <Route exact path="/">
+        <Route path="*">
           <Redirect to="/recipes" />
         </Route>
         <Route path="/recipes">
           <RecipeGrid recipes={recipes} setCurrentIndex={setCurrentIndex} />
         </Route>
         <Route path="/recipe">
-          {currentIndex && <RecipePage recipes={recipes} currentIndex={currentIndex} />}
+          { (
+            <RecipePage recipes={recipes} currentIndex={currentIndex} />
+          )}
         </Route>
+        <GithubCorner href="https://github.com/Maryll-castelino/recipe-api-app"
+        direction="left" />
       </div>
     </Router>
   );

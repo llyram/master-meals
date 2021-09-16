@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
 /* width */
 ::-webkit-scrollbar {
@@ -54,7 +54,7 @@ header {
   background-color: #eeeeee;
   outline: none;
   border: 2px solid #eeeeee;
-  color: #44475a;;
+  color: #44475a;
 }
 
 .search-bar:focus {
@@ -80,14 +80,14 @@ header {
 }
 
 .fillerDivs {
-  content: ' ';
+  content: " ";
   width: 290px;
   /* margin: 20px; */
 }
 
 .logo {
   color: #44475a;
-  font-family: 'Lobster', cursive;
+  font-family: "Lobster", cursive;
   font-size: 40px;
   margin: 0;
   margin-left: 5vw;
@@ -101,7 +101,7 @@ header {
   height: 100%;
 }
 
-.nav-list li{
+.nav-list li {
   padding-left: 40px;
   padding-right: 40px;
   margin: 0;
@@ -110,15 +110,14 @@ header {
   align-items: center;
   width: 50px;
   font-size: large;
-  font-family: 'Lobster', cursive;
+  font-family: "Lobster", cursive;
+  height: 100%;
 }
 
 .nav-list li:hover {
   background-color: #50fa7b;
   cursor: pointer;
 }
-
-
 
 .recipe {
   box-shadow: 2px 2px 4px grey;
